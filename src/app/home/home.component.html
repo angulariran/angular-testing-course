@@ -1,0 +1,42 @@
+
+<div class="container">
+
+  <h3>All Foods</h3>
+
+  <mat-tab-group>
+
+    @if (foods$|async; as foods){
+@if(foods.length>0){
+  <mat-tab label="foods" >
+
+    <app-food-card-list
+                        [foods]="foods">
+
+    </app-food-card-list>
+
+  </mat-tab>
+}
+
+
+    }
+
+
+
+<!--    <ng-container  *ngIf="(advancedCourses$ | async) as advancedCourses">-->
+
+<!--      <mat-tab label="Advanced" *ngIf="advancedCourses?.length > 0">-->
+
+<!--        <app-recipe-card-list (courseEdited)="reloadCourses()"-->
+<!--                           [courses]="advancedCourses">-->
+
+
+<!--        </app-recipe-card-list>-->
+
+<!--      </mat-tab>-->
+
+<!--    </ng-container>-->
+
+  </mat-tab-group>
+
+</div>
+
