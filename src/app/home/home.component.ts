@@ -5,7 +5,7 @@ import {RecipeCardListComponent} from "../recipe-card-list/recipe-card-list.comp
 import {Food} from "../data/model/food";
 import {Recipe} from "../data/model/recipe";
 import {Observable} from "rxjs";
-import {FoodService} from "../data/food.service";
+import {FoodService} from "../services/food.service";
 import {AsyncPipe} from "@angular/common";
 
 @Component({
