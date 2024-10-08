@@ -1,7 +1,7 @@
 import {FoodService} from "./food.service";
 import {TestBed} from "@angular/core/testing";
 import { HttpTestingController, provideHttpClientTesting} from "@angular/common/http/testing";
-import { provideHttpClient} from "@angular/common/http";
+import {HttpErrorResponse, provideHttpClient} from "@angular/common/http";
 import db from '../../../db.json';
 import {Food} from "../data/model/food";
 
@@ -56,7 +56,25 @@ describe('foodService', () => {
     expect(req.request.method).toEqual('PUT');
     expect(req.request.body.titles.description).toEqual(changes.titles?.description);
     req.flush({...changes,id:"2"})
-  })
+  });
+
+  it('should give an error if save course fails',()=>{
+    const changes:Partial<Food> = {titles:{description:"testing food"}};
+    // foodService.saveFood(2,changes)
+    //   .subscribe(()=>fail("the save food operation should have failed"),
+    //     (error:HttpErrorResponse)=>
+    //   expect(error.status).toBe(500));
+    foodService.saveFood(2,changes)
+      .subscribe({next:()=>fail("the save food operation should have failed"),
+        error:(error:HttpErrorResponse)=>
+          expect(error.status).toBe(500)});
+    const req=httpClientTestingController.expectOne('http://localhost:3000/foods/2');
+    expect(req.request.method).toEqual('PUT');
+
+    req.flush('Save course fails',{status:500,statusText:'Internal Server Error'});
+
+  });
+
 
   afterEach(()=>{
     httpClientTestingController.verify();
