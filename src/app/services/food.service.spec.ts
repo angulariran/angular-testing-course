@@ -31,6 +31,18 @@ describe('foodService', () => {
     expect(req.request.method).toEqual('GET');
     req.flush(db.foods);
 
-  })
+  });
+
+  it('should return food by id',()=>{
+    foodService.findFoodById(3)
+      .subscribe(food=>{
+        expect(food).toBeTruthy();
+        expect(food.id).toBe('3');
+      });
+    const req = httpClientTestingController.expectOne('http://localhost:3000/foods/3');
+    expect(req.request.method).toEqual('GET');
+    req.flush(db.foods.find(food=>+food.id===3)!);
+
+  });
 
 })
