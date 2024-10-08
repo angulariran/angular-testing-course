@@ -1,7 +1,7 @@
 {
   "foods": [
     {
-      "id": 1,
+      "id": "1",
       "titles": {
         "description": "Lasagna",
         "longDescription": "Lasagna is an Italian dish made with layers of pasta, meat or vegetables, cheese, and tomato or béchamel sauce, baked to perfection."
@@ -9,10 +9,10 @@
       "image": "assets/media/foods/lazagna.jpg",
       "category": "fast-food",
       "url": "lasagna",
-      "recipeId": ""
+      "recipeId": 1
     },
     {
-      "id": 2,
+      "id": "2",
       "titles": {
         "description": "meat-ball spaghetti",
         "longDescription": "Meatball spaghetti is a classic Italian dish featuring spaghetti pasta topped with savory meatballs in a rich tomato sauce."
@@ -20,10 +20,10 @@
       "image": "assets/media/foods/spaghetti.png",
       "category": "spaghetti",
       "url": "spaghetti",
-      "recipeId": ""
+      "recipeId": 1
     },
     {
-      "id": 3,
+      "id": "3",
       "titles": {
         "description": "kebab koobide",
         "longDescription": "Kebab koobide is a Persian dish made from seasoned ground meat (usually lamb or beef) shaped onto skewers and grilled over... ."
@@ -31,10 +31,10 @@
       "image": "assets/media/foods/kobide.jpg",
       "category": "persian-food",
       "url": "kebab-kobide",
-      "recipeId": ""
+      "recipeId": 1
     },
     {
-      "id": 4,
+      "id": "4",
       "titles": {
         "description": "qorme sabzi",
         "longDescription": "Qorme Sabzi is a traditional Persian stew made with fresh herbs, kidney beans, and lamb or beef, typically served with rice."
@@ -42,13 +42,13 @@
       "image": "assets/media/foods/qorme-sabzi.jpg",
       "category": "persian-food",
       "url": "qorme sabzi",
-      "recipeId": ""
+      "recipeId": 2
     }
   ],
   "recipes": [
     {
       "id": 1,
-    "name":"a",
+    "name":"recipe1",
     "materials": [],
     "preparationTime": 5,
     "image": "",
@@ -57,7 +57,16 @@
   },
     {
       "id": 2,
-      "name":"a",
+      "name":"recipe2",
+      "materials": [],
+      "preparationTime":10,
+      "image": "",
+      "category": "",
+      "url": ""
+    },
+    {
+      "id": 3,
+      "name":"recipe3",
       "materials": [],
       "preparationTime": 5,
       "image": "",
@@ -65,8 +74,8 @@
       "url": ""
     },
     {
-      "id": 3,
-      "name":"a",
+      "id": 4,
+      "name":"recipe4",
       "materials": [],
       "preparationTime": 5,
       "image": "",

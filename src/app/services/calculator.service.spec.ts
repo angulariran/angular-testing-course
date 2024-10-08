@@ -19,10 +19,11 @@ describe("CalculatorService",()=>{
     // calculator=TestBed.get(CalculatorService);
     calculator=TestBed.inject(CalculatorService);
   })
-  fit("should subtract 2 numbers",()=>{
+  it("should subtract 2 numbers",()=>{
 
     const result = calculator.subtract(3,2);
     expect(result).withContext("should be").toBe(1);
+
   })
 
   it("should add 2 numbers",()=>{
@@ -33,7 +34,6 @@ describe("CalculatorService",()=>{
     const result=calculator.add(2,5);
     expect(result).withContext("should be").toBe(7);
     expect(logger.log).toHaveBeenCalledTimes(1);
-    fail()
   });
 
 })

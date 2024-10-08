@@ -1,5 +1,5 @@
 export interface Recipe {
-  id: 1,
+  id: string,
   name:string,
   materials: string[],
   preparationTime: number,

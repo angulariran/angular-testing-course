@@ -1,9 +1,9 @@
 
 export interface Food {
-  id: number,
+  id: string,
   titles: {
     description: string,
-    "longDescription": string
+    longDescription?: string
   },
   image: string,
   category: string,
