@@ -3,6 +3,7 @@ import {TestBed} from "@angular/core/testing";
 import { HttpTestingController, provideHttpClientTesting} from "@angular/common/http/testing";
 import { provideHttpClient} from "@angular/common/http";
 import db from '../../../db.json';
+import {Food} from "../data/model/food";
 
 
 describe('foodService', () => {
@@ -44,6 +45,19 @@ describe('foodService', () => {
     req.flush(db.foods.find(food=>+food.id===3)!);
 
   });
+
+  it('should save food',()=>{
+    const changes:Partial<Food> = {titles:{description:"testing food"}};
+    foodService.saveFood(2,changes)
+      .subscribe(food=>{
+        expect(food.id).toBe('2');
+      });
+    const req=httpClientTestingController.expectOne('http://localhost:3000/foods/2');
+    expect(req.request.method).toEqual('PUT');
+    expect(req.request.body.titles.description).toEqual(changes.titles?.description);
+    req.flush({...changes,id:"2"})
+  })
+
   afterEach(()=>{
     httpClientTestingController.verify();
   })
