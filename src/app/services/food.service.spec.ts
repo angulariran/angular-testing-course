@@ -4,6 +4,7 @@ import { HttpTestingController, provideHttpClientTesting} from "@angular/common/
 import {HttpErrorResponse, provideHttpClient} from "@angular/common/http";
 import db from '../../../db.json';
 import {Food} from "../data/model/food";
+import {findFoodForRecipe} from "../data/data-haandling";
 
 
 describe('foodService', () => {
@@ -74,6 +75,22 @@ describe('foodService', () => {
     req.flush('Save course fails',{status:500,statusText:'Internal Server Error'});
 
   });
+
+  it('should find a list of foods',()=>{
+    foodService.findRecipeFoods(1)
+      .subscribe(foods=>{
+        expect(foods).toBeTruthy();
+        expect(foods.length).toBe(3)
+      })
+    const req=httpClientTestingController.expectOne(req=>req.url==="http://localhost:3000/foods");
+    expect(req.request.method).toEqual('GET');
+    expect(req.request.params.get('recipeId')).toEqual('1');
+    expect(req.request.params.get('_sort')).toEqual('-id');
+    expect(req.request.params.get('_page')).toEqual('0');
+    expect(req.request.params.get('_per_page')).toEqual('3');
+    req.flush(findFoodForRecipe(1))
+  })
+
 
 
   afterEach(()=>{
