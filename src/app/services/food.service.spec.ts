@@ -44,5 +44,9 @@ describe('foodService', () => {
     req.flush(db.foods.find(food=>+food.id===3)!);
 
   });
+  afterEach(()=>{
+    httpClientTestingController.verify();
+  })
+
 
 })
