@@ -2,7 +2,7 @@ import {FoodService} from "./food.service";
 import {TestBed} from "@angular/core/testing";
 import { HttpTestingController, provideHttpClientTesting} from "@angular/common/http/testing";
 import { provideHttpClient} from "@angular/common/http";
-
+import db from '../../../db.json';
 
 
 describe('foodService', () => {
@@ -19,6 +19,18 @@ describe('foodService', () => {
     httpClientTestingController=TestBed.inject(HttpTestingController);
 
   })
+  it('should return foods',()=>{
+    foodService.findAllFoods()
+      .subscribe(foods=>{
+        expect(foods).toBeTruthy();
+        expect(foods.length).toBe(4);
+        const food=foods.find(food=>+food.id===2);
+        expect(food?.titles.description).toBe("meat-ball spaghetti")
+      });
+    const req=httpClientTestingController.expectOne('http://localhost:3000/foods');
+    expect(req.request.method).toEqual('GET');
+    req.flush(db.foods);
 
+  })
 
 })
